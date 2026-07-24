@@ -1,0 +1,974 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- app/src/main/res/layout/activity_detail.xml -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="?android:attr/colorBackground">
+
+    <!-- 입력 폼 스크롤 영역 -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- 1. 개인정보 섹션 -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="개인정보"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:hint="이름">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPersonName" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:hint="전화번호">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etPhone"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="phone" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:hint="측정 날짜">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etDate"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="date" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:hint="메모">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etNotes"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textMultiLine"
+                            android:minLines="2" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="주 투구 손"
+                        android:textAppearance="?attr/textAppearanceLabelLarge" />
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/rbRightHand"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:text="오른손" />
+
+                        <RadioButton
+                            android:id="@+id/rbLeftHand"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="왼손" />
+                    </RadioGroup>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 2. 중지 사양 섹션 -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="중지 사양 (Middle Finger)"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:hint="홀 사이즈 (mm)">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etMidSize"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- X축 / Y축 나란히 배치 (1:1) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:orientation="horizontal">
+
+                        <!-- 중지 X축 -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="6dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="X축 이동"
+                                android:textAppearance="?attr/textAppearanceLabelLarge" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <!-- 자연수 -->
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:hint="자연수">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/etMidXInt"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="numberSigned" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <!-- 세로 분수 (분자/분모) -->
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_marginStart="4dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <EditText
+                                        android:id="@+id/etMidXNum"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="36dp"
+                                        android:background="@drawable/bg_fraction_edittext"
+                                        android:gravity="center"
+                                        android:hint="분자"
+                                        android:inputType="numberSigned"
+                                        android:padding="2dp"
+                                        android:textSize="13sp" />
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1.5dp"
+                                        android:layout_marginVertical="2dp"
+                                        android:background="?attr/colorOnSurface" />
+
+                                    <EditText
+                                        android:id="@+id/etMidXDen"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="36dp"
+                                        android:background="@drawable/bg_fraction_edittext"
+                                        android:gravity="center"
+                                        android:hint="분모"
+                                        android:inputType="numberSigned"
+                                        android:padding="2dp"
+                                        android:textSize="13sp" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!-- 중지 Y축 -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="6dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Y축 이동"
+                                android:textAppearance="?attr/textAppearanceLabelLarge" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <!-- 자연수 -->
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:hint="자연수">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/etMidYInt"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="numberSigned" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <!-- 세로 분수 (분자/분모) -->
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_marginStart="4dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <EditText
+                                        android:id="@+id/etMidYNum"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="36dp"
+                                        android:background="@drawable/bg_fraction_edittext"
+                                        android:gravity="center"
+                                        android:hint="분자"
+                                        android:inputType="numberSigned"
+                                        android:padding="2dp"
+                                        android:textSize="13sp" />
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1.5dp"
+                                        android:layout_marginVertical="2dp"
+                                        android:background="?attr/colorOnSurface" />
+
+                                    <EditText
+                                        android:id="@+id/etMidYDen"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="36dp"
+                                        android:background="@drawable/bg_fraction_edittext"
+                                        android:gravity="center"
+                                        android:hint="분모"
+                                        android:inputType="numberSigned"
+                                        android:padding="2dp"
+                                        android:textSize="13sp" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 3. 약지 사양 섹션 -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="약지 사양 (Ring Finger)"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:hint="홀 사이즈 (mm)">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etRingSize"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- X축 / Y축 나란히 배치 (1:1) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:orientation="horizontal">
+
+                        <!-- 약지 X축 -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="6dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="X축 이동"
+                                android:textAppearance="?attr/textAppearanceLabelLarge" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:hint="자연수">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/etRingXInt"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="numberSigned" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_marginStart="4dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <EditText
+                                        android:id="@+id/etRingXNum"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="36dp"
+                                        android:background="@drawable/bg_fraction_edittext"
+                                        android:gravity="center"
+                                        android:hint="분자"
+                                        android:inputType="numberSigned"
+                                        android:padding="2dp"
+                                        android:textSize="13sp" />
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1.5dp"
+                                        android:layout_marginVertical="2dp"
+                                        android:background="?attr/colorOnSurface" />
+
+                                    <EditText
+                                        android:id="@+id/etRingXDen"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="36dp"
+                                        android:background="@drawable/bg_fraction_edittext"
+                                        android:gravity="center"
+                                        android:hint="분모"
+                                        android:inputType="numberSigned"
+                                        android:padding="2dp"
+                                        android:textSize="13sp" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!-- 약지 Y축 -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="6dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Y축 이동"
+                                android:textAppearance="?attr/textAppearanceLabelLarge" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:hint="자연수">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/etRingYInt"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="numberSigned" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_marginStart="4dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <EditText
+                                        android:id="@+id/etRingYNum"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="36dp"
+                                        android:background="@drawable/bg_fraction_edittext"
+                                        android:gravity="center"
+                                        android:hint="분자"
+                                        android:inputType="numberSigned"
+                                        android:padding="2dp"
+                                        android:textSize="13sp" />
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1.5dp"
+                                        android:layout_marginVertical="2dp"
+                                        android:background="?attr/colorOnSurface" />
+
+                                    <EditText
+                                        android:id="@+id/etRingYDen"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="36dp"
+                                        android:background="@drawable/bg_fraction_edittext"
+                                        android:gravity="center"
+                                        android:hint="분모"
+                                        android:inputType="numberSigned"
+                                        android:padding="2dp"
+                                        android:textSize="13sp" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 4. 엄지 사양 섹션 -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="엄지 사양 (Thumb)"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        android:textStyle="bold" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:hint="홀 사이즈 (mm)">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etThumbSize"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- X축 / Y축 나란히 배치 (1:1) -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:orientation="horizontal">
+
+                        <!-- 엄지 X축 -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginEnd="6dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="X축 이동"
+                                android:textAppearance="?attr/textAppearanceLabelLarge" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:hint="자연수">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/etThumbXInt"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="numberSigned" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_marginStart="4dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <EditText
+                                        android:id="@+id/etThumbXNum"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="36dp"
+                                        android:background="@drawable/bg_fraction_edittext"
+                                        android:gravity="center"
+                                        android:hint="분자"
+                                        android:inputType="numberSigned"
+                                        android:padding="2dp"
+                                        android:textSize="13sp" />
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1.5dp"
+                                        android:layout_marginVertical="2dp"
+                                        android:background="?attr/colorOnSurface" />
+
+                                    <EditText
+                                        android:id="@+id/etThumbXDen"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="36dp"
+                                        android:background="@drawable/bg_fraction_edittext"
+                                        android:gravity="center"
+                                        android:hint="분모"
+                                        android:inputType="numberSigned"
+                                        android:padding="2dp"
+                                        android:textSize="13sp" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                        <!-- 엄지 Y축 -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="6dp"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Y축 이동"
+                                android:textAppearance="?attr/textAppearanceLabelLarge" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <com.google.android.material.textfield.TextInputLayout
+                                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:hint="자연수">
+
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:id="@+id/etThumbYInt"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="numberSigned" />
+                                </com.google.android.material.textfield.TextInputLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_marginStart="4dp"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <EditText
+                                        android:id="@+id/etThumbYNum"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="36dp"
+                                        android:background="@drawable/bg_fraction_edittext"
+                                        android:gravity="center"
+                                        android:hint="분자"
+                                        android:inputType="numberSigned"
+                                        android:padding="2dp"
+                                        android:textSize="13sp" />
+
+                                    <View
+                                        android:layout_width="match_parent"
+                                        android:layout_height="1.5dp"
+                                        android:layout_marginVertical="2dp"
+                                        android:background="?attr/colorOnSurface" />
+
+                                    <EditText
+                                        android:id="@+id/etThumbYDen"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="36dp"
+                                        android:background="@drawable/bg_fraction_edittext"
+                                        android:gravity="center"
+                                        android:hint="분모"
+                                        android:inputType="numberSigned"
+                                        android:padding="2dp"
+                                        android:textSize="13sp" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- 5. 스팬 및 브릿지 섹션 -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="스팬 &amp; 브릿지 (Span &amp; Bridge)"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        android:textStyle="bold" />
+
+                    <!-- 중지 스팬 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="중지 스팬"
+                        android:textAppearance="?attr/textAppearanceLabelLarge" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="자연수">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etSpanMidInt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="numberSigned" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="8dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <EditText
+                                android:id="@+id/etSpanMidNum"
+                                android:layout_width="match_parent"
+                                android:layout_height="36dp"
+                                android:background="@drawable/bg_fraction_edittext"
+                                android:gravity="center"
+                                android:hint="분자"
+                                android:inputType="numberSigned"
+                                android:padding="2dp"
+                                android:textSize="13sp" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1.5dp"
+                                android:layout_marginVertical="2dp"
+                                android:background="?attr/colorOnSurface" />
+
+                            <EditText
+                                android:id="@+id/etSpanMidDen"
+                                android:layout_width="match_parent"
+                                android:layout_height="36dp"
+                                android:background="@drawable/bg_fraction_edittext"
+                                android:gravity="center"
+                                android:hint="분모"
+                                android:inputType="numberSigned"
+                                android:padding="2dp"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- 약지 스팬 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="약지 스팬"
+                        android:textAppearance="?attr/textAppearanceLabelLarge" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="자연수">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etSpanRingInt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="numberSigned" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="8dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <EditText
+                                android:id="@+id/etSpanRingNum"
+                                android:layout_width="match_parent"
+                                android:layout_height="36dp"
+                                android:background="@drawable/bg_fraction_edittext"
+                                android:gravity="center"
+                                android:hint="분자"
+                                android:inputType="numberSigned"
+                                android:padding="2dp"
+                                android:textSize="13sp" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1.5dp"
+                                android:layout_marginVertical="2dp"
+                                android:background="?attr/colorOnSurface" />
+
+                            <EditText
+                                android:id="@+id/etSpanRingDen"
+                                android:layout_width="match_parent"
+                                android:layout_height="36dp"
+                                android:background="@drawable/bg_fraction_edittext"
+                                android:gravity="center"
+                                android:hint="분모"
+                                android:inputType="numberSigned"
+                                android:padding="2dp"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- 브릿지 간격 -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="브릿지 간격"
+                        android:textAppearance="?attr/textAppearanceLabelLarge" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="자연수">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etBridgeInt"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="numberSigned" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:layout_marginStart="8dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <EditText
+                                android:id="@+id/etBridgeNum"
+                                android:layout_width="match_parent"
+                                android:layout_height="36dp"
+                                android:background="@drawable/bg_fraction_edittext"
+                                android:gravity="center"
+                                android:hint="분자"
+                                android:inputType="numberSigned"
+                                android:padding="2dp"
+                                android:textSize="13sp" />
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1.5dp"
+                                android:layout_marginVertical="2dp"
+                                android:background="?attr/colorOnSurface" />
+
+                            <EditText
+                                android:id="@+id/etBridgeDen"
+                                android:layout_width="match_parent"
+                                android:layout_height="36dp"
+                                android:background="@drawable/bg_fraction_edittext"
+                                android:gravity="center"
+                                android:hint="분모"
+                                android:inputType="numberSigned"
+                                android:padding="2dp"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- 화면 하단 고정 버튼 영역 -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="8dp"
+        app:strokeWidth="0dp">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSave"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="지공 데이터 저장하기"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:cornerRadius="12dp" />
+        </FrameLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

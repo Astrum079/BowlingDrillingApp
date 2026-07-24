@@ -1,0 +1,72 @@
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="?android:attr/colorBackground">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <!-- 검색 영역 카드 -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="2dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="#E2E8F0">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            app:iconifiedByDefault="false"
+            app:queryHint="회원 이름 또는 전화번호 검색..." />
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- STREAMING_CHUNK:Adding RecyclerView container for member list... -->
+    <!-- 회원 목록 리사이클러뷰 -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingHorizontal="12dp"
+        android:paddingBottom="80dp" />
+
+</LinearLayout>
+
+<!-- STREAMING_CHUNK:Adding Floating Action Buttons... -->
+<!-- 좌측 하단 백업/불러오기 버튼 -->
+<com.google.android.material.floatingactionbutton.FloatingActionButton
+    android:id="@+id/fabImport"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom|start"
+    android:layout_margin="16dp"
+    android:contentDescription="데이터 가져오기"
+    android:src="@android:drawable/ic_menu_upload"
+    app:backgroundTint="#475569"
+    app:fabSize="normal"
+    app:tint="@android:color/white" />
+
+<!-- 우측 하단 신규 등록 FAB 버튼 -->
+<com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+    android:id="@+id/fabAdd"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom|end"
+    android:layout_margin="16dp"
+    android:contentDescription="신규 회원 추가"
+    android:text="신규 등록"
+    android:textColor="@android:color/white"
+    app:icon="@android:drawable/ic_input_add"
+    app:iconTint="@android:color/white" />
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
