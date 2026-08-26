@@ -2,4 +2,13 @@
 <!-- app/src/main/res/values/themes.xml – 앱 테마 -->
 <resources>
     <style name="Theme.BowlingDrilling" parent="Theme.Material3.DayNight.NoActionBar" />
+    <style name="PreviewOverlayText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">top|start</item>
+        <item name="android:padding">3dp</item>
+        <item name="android:textColor">#0F172A</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">28dp</item>
+    </style>
 </resources>
