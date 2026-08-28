@@ -22,20 +22,20 @@
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
                     <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="중지" android:textSize="20dp" android:textAppearance="?attr/textAppearanceTitleMedium" android:textStyle="bold" />
-                    <EditText android:id="@+id/etMidSize" android:layout_width="110dp" android:layout_height="wrap_content" android:hint="홀 사이즈" />
+                    <EditText android:id="@+id/etMidSize" android:layout_width="110dp" android:layout_height="wrap_content" android:hint="홀 사이즈" android:inputType="number" />
                 </LinearLayout>
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
                     <LinearLayout android:layout_width="40dp" android:layout_height="wrap_content" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="X"/><CheckBox android:id="@+id/cbMidXNegative" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="-" android:padding="0dp"/></LinearLayout>
                     
                     <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-                        <EditText android:id="@+id/etMidXNum" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분자" />
-                        <EditText android:id="@+id/etMidXDen" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분모" />
+                        <EditText android:id="@+id/etMidXNum" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분자" android:inputType="number" />
+                        <EditText android:id="@+id/etMidXDen" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분모" android:inputType="number" />
                     </LinearLayout>
                     <LinearLayout android:layout_width="28dp" android:layout_height="wrap_content" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Y"/><CheckBox android:id="@+id/cbMidYNegative" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="-" android:padding="0dp"/></LinearLayout>
                     
                     <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-                        <EditText android:id="@+id/etMidYNum" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분자" />
-                        <EditText android:id="@+id/etMidYDen" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분모" />
+                        <EditText android:id="@+id/etMidYNum" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분자" android:inputType="number" />
+                        <EditText android:id="@+id/etMidYDen" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분모" android:inputType="number" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -45,20 +45,20 @@
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
                     <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="약지" android:textSize="20dp" android:textAppearance="?attr/textAppearanceTitleMedium" android:textStyle="bold" />
-                    <EditText android:id="@+id/etRingSize" android:layout_width="110dp" android:layout_height="wrap_content" android:hint="홀 사이즈" />
+                    <EditText android:id="@+id/etRingSize" android:layout_width="110dp" android:layout_height="wrap_content" android:hint="홀 사이즈" android:inputType="number" />
                 </LinearLayout>
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
                     <LinearLayout android:layout_width="40dp" android:layout_height="wrap_content" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="X"/><CheckBox android:id="@+id/cbRingXNegative" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="-" android:padding="0dp"/></LinearLayout>
                     
                     <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-                        <EditText android:id="@+id/etRingXNum" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분자" />
-                        <EditText android:id="@+id/etRingXDen" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분모" />
+                        <EditText android:id="@+id/etRingXNum" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분자" android:inputType="number" />
+                        <EditText android:id="@+id/etRingXDen" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분모" android:inputType="number" />
                     </LinearLayout>
                     <LinearLayout android:layout_width="28dp" android:layout_height="wrap_content" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Y"/><CheckBox android:id="@+id/cbRingYNegative" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="-" android:padding="0dp"/></LinearLayout>
                     
                     <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-                        <EditText android:id="@+id/etRingYNum" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분자" />
-                        <EditText android:id="@+id/etRingYDen" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분모" />
+                        <EditText android:id="@+id/etRingYNum" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분자" android:inputType="number" />
+                        <EditText android:id="@+id/etRingYDen" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분모" android:inputType="number" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -68,20 +68,20 @@
             <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="12dp">
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
                     <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="엄지" android:textAppearance="?attr/textAppearanceTitleMedium" android:textStyle="bold" android:textSize="20dp" />
-                    <EditText android:id="@+id/etThumbSize" android:layout_width="110dp" android:layout_height="wrap_content" android:hint="홀 사이즈" />
+                    <EditText android:id="@+id/etThumbSize" android:layout_width="110dp" android:layout_height="wrap_content" android:hint="홀 사이즈" android:inputType="number" />
                 </LinearLayout>
                 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
                     <LinearLayout android:layout_width="40dp" android:layout_height="wrap_content" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="X"/><CheckBox android:id="@+id/cbThumbXNegative" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="-" android:padding="0dp"/></LinearLayout>
                     
                     <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-                        <EditText android:id="@+id/etThumbXNum" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분자" />
-                        <EditText android:id="@+id/etThumbXDen" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분모" />
+                        <EditText android:id="@+id/etThumbXNum" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분자" android:inputType="number" />
+                        <EditText android:id="@+id/etThumbXDen" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분모" android:inputType="number" />
                     </LinearLayout>
                     <LinearLayout android:layout_width="28dp" android:layout_height="wrap_content" android:orientation="vertical"><TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Y"/><CheckBox android:id="@+id/cbThumbYNegative" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="-" android:padding="0dp"/></LinearLayout>
                     
                     <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-                        <EditText android:id="@+id/etThumbYNum" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분자" />
-                        <EditText android:id="@+id/etThumbYDen" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분모" />
+                        <EditText android:id="@+id/etThumbYNum" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분자" android:inputType="number" />
+                        <EditText android:id="@+id/etThumbYDen" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분모" android:inputType="number" />
                     </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
@@ -94,30 +94,30 @@
                     <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
                         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="엄지-중지" />
                         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
-                            <EditText android:id="@+id/etSpanMidInt" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:hint="정수" />
+                            <EditText android:id="@+id/etSpanMidInt" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:hint="정수" android:inputType="number" />
                             <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-                                <EditText android:id="@+id/etSpanMidNum" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분자" />
-                                <EditText android:id="@+id/etSpanMidDen" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분모" />
+                                <EditText android:id="@+id/etSpanMidNum" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분자" android:inputType="number" />
+                                <EditText android:id="@+id/etSpanMidDen" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분모" android:inputType="number" />
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
                         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="엄지-약지" />
                         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
-                            <EditText android:id="@+id/etSpanRingInt" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:hint="정수" />
+                            <EditText android:id="@+id/etSpanRingInt" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:hint="정수" android:inputType="number" />
                             <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-                                <EditText android:id="@+id/etSpanRingNum" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분자" />
-                                <EditText android:id="@+id/etSpanRingDen" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분모" />
+                                <EditText android:id="@+id/etSpanRingNum" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분자" android:inputType="number" />
+                                <EditText android:id="@+id/etSpanRingDen" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분모" android:inputType="number" />
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
                     <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
                         <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="브릿지" />
                         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
-                            <EditText android:id="@+id/etBridgeInt" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:hint="정수" />
+                            <EditText android:id="@+id/etBridgeInt" android:layout_width="0dp" android:layout_height="40dp" android:layout_weight="1" android:hint="정수" android:inputType="number" />
                             <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-                                <EditText android:id="@+id/etBridgeNum" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분자" />
-                                <EditText android:id="@+id/etBridgeDen" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분모" />
+                                <EditText android:id="@+id/etBridgeNum" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분자" android:inputType="number" />
+                                <EditText android:id="@+id/etBridgeDen" android:layout_width="match_parent" android:layout_height="40dp" android:hint="분모" android:inputType="number" />
                             </LinearLayout>
                         </LinearLayout>
                     </LinearLayout>
@@ -127,33 +127,33 @@
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="입력 미리보기" android:textAppearance="?attr/textAppearanceTitleMedium" android:textStyle="bold" />
         <FrameLayout android:id="@+id/previewCanvas" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="12dp" android:background="#F8FAFC">
             <ImageView android:id="@+id/ivPreviewSheet" android:layout_width="match_parent" android:layout_height="wrap_content" android:adjustViewBounds="true" android:contentDescription="지공 도면" android:scaleType="fitCenter" android:src="@drawable/drilling_sheet_bg"/>
-            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewMidSize" android:layout_marginStart="103dp" android:layout_marginTop="125dp" tools:text="00" />
-            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewMidXNum" android:layout_marginStart="103dp" android:layout_marginTop="20dp" tools:text="00"/>
-            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewMidXDen" android:layout_marginStart="103dp" android:layout_marginTop="52dp" tools:text="00"/>
-            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewMidYNum" android:layout_marginStart="27dp" android:layout_marginTop="114dp" tools:text="00"/>
-            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewMidYDen" android:layout_marginStart="27dp" android:layout_marginTop="144dp" tools:text="00"/>
+            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewMidSize" tools:text="00" />
+            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewMidXNum" tools:text="00"/>
+            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewMidXDen" tools:text="00"/>
+            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewMidYNum" tools:text="00"/>
+            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewMidYDen" tools:text="00"/>
 
-            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewRingSize" android:layout_marginStart="227dp" android:layout_marginTop="125dp" tools:text="00"/>
-            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewRingXNum" android:layout_marginStart="227dp" android:layout_marginTop="19dp" tools:text="00"/>
-            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewRingXDen" android:layout_marginStart="227dp" android:layout_marginTop="51dp" tools:text="00"/>
-            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewRingYNum" android:layout_marginStart="304dp" android:layout_marginTop="120dp" tools:text="00"/>
-            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewRingYDen" android:layout_marginStart="304dp" android:layout_marginTop="152dp" tools:text="00"/>
+            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewRingSize" tools:text="00"/>
+            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewRingXNum" tools:text="00"/>
+            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewRingXDen" tools:text="00"/>
+            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewRingYNum" tools:text="00"/>
+            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewRingYDen" tools:text="00"/>
 
-            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewThumbSize" android:layout_marginStart="158dp" android:layout_marginTop="372dp" tools:text="00"/>
-            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewThumbXNum" android:layout_marginStart="301dp" android:layout_marginTop="355dp" tools:text="00"/>
-            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewThumbXDen" android:layout_marginStart="301dp" android:layout_marginTop="390dp" tools:text="00"/>
-            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewThumbYNum" android:layout_marginStart="232dp" android:layout_marginTop="438dp" tools:text="00"/>
-            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewThumbYDen" android:layout_marginStart="232dp" android:layout_marginTop="470dp" tools:text="00"/>
+            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewThumbSize" tools:text="00"/>
+            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewThumbXNum" tools:text="00"/>
+            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewThumbXDen" tools:text="00"/>
+            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewThumbYNum" tools:text="00"/>
+            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewThumbYDen" tools:text="00"/>
 
-            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewSpanMidInt" android:layout_marginStart="68dp" android:layout_marginTop="260dp" tools:text="00"/>
-            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewSpanMidNum" android:layout_marginStart="112dp" android:layout_marginTop="242dp" tools:text="00"/>
-            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewSpanMidDen" android:layout_marginStart="112dp" android:layout_marginTop="277dp" tools:text="00"/>
+            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewSpanMidInt" tools:text="00"/>
+            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewSpanMidNum" tools:text="00"/>
+            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewSpanMidDen" tools:text="00"/>
 
-            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewSpanRingInt" android:layout_marginStart="215dp" android:layout_marginTop="260dp" tools:text="00"/>
-            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewSpanRingNum" android:layout_marginStart="261dp" android:layout_marginTop="242dp" tools:text="00"/>
-            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewSpanRingDen" android:layout_marginStart="261dp" android:layout_marginTop="277dp" tools:text="00"/>
+            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewSpanRingInt" tools:text="00"/>
+            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewSpanRingNum" tools:text="00"/>
+            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewSpanRingDen" tools:text="00"/>
 
-            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewHand" android:layout_marginStart="8dp" android:layout_marginTop="450dp" tools:text="RH"/>
+            <TextView style="@style/PreviewOverlayText" android:id="@+id/tvPreviewHand" tools:text="RH"/>
         </FrameLayout>
         <com.google.android.material.button.MaterialButton android:id="@+id/btnSave" android:layout_width="match_parent" android:layout_height="56dp" android:text="지공 데이터 저장하기" />
     </LinearLayout>
