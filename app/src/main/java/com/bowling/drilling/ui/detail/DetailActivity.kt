@@ -4,10 +4,11 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
-import android.widget.FrameLayout
 import android.widget.TextView
 import android.util.TypedValue
 import kotlin.math.roundToInt
+import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.bowling.drilling.data.entity.BowlingRecord
@@ -18,7 +19,7 @@ class DetailActivity : AppCompatActivity() {
     private enum class AnchorRole { CENTER, LEFT, NUMERATOR, DENOMINATOR }
     private data class PreviewAnchor(val xRatio: Float, val yRatio: Float, val role: AnchorRole)
     private lateinit var binding: ActivityDetailBinding
-    private val viewModel = DetailViewModel()
+    private val viewModel: DetailViewModel by viewModels()
     private var currentId = 0L
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +29,14 @@ class DetailActivity : AppCompatActivity() {
         currentId = intent.getLongExtra("record_id", 0L)
         setupPreviewUpdates()
         setupPreviewScaling()
-        if (currentId != 0L) lifecycleScope.launch { viewModel.loadRecord(currentId); viewModel.record.collect { it?.let(::bindRecordToUi) } } else updatePreview()
+        // 화면 회전 시에는 DB를 다시 읽지 않는다. 입력 중이던 내용을 덮어써 버리기 때문
+        if (currentId != 0L && savedInstanceState == null) {
+            lifecycleScope.launch {
+                viewModel.loadRecord(currentId)
+                viewModel.record.value?.let(::bindRecordToUi)
+            }
+        }
+        binding.root.post { updatePreview() }
         binding.btnSave.setOnClickListener { saveRecord() }
     }
 
@@ -47,9 +55,15 @@ class DetailActivity : AppCompatActivity() {
         return Triple(whole, nums.getOrElse(0) { "" }, nums.getOrElse(1) { "" })
     }
 
+    /** 분자·분모가 짝을 이루지 못하면 분수는 버리되, 정수 부분은 살린다 */
     private fun buildInch(whole: String, numerator: String, denominator: String): String {
         val w = whole.trim(); val n = numerator.trim(); val d = denominator.trim()
-        return when { w.isNotEmpty() && n.isNotEmpty() && d.isNotEmpty() -> "$w $n/$d"; w.isNotEmpty() && n.isEmpty() && d.isEmpty() -> w; w.isEmpty() && n.isNotEmpty() && d.isNotEmpty() -> "$n/$d"; else -> "" }
+        val fraction = if (n.isNotEmpty() && d.isNotEmpty()) "$n/$d" else ""
+        return when {
+            w.isNotEmpty() && fraction.isNotEmpty() -> "$w $fraction"
+            w.isNotEmpty() -> w
+            else -> fraction
+        }
     }
 
     private fun buildSigned(negative: Boolean, numerator: String, denominator: String): String {
@@ -59,11 +73,6 @@ class DetailActivity : AppCompatActivity() {
 
     private fun setFraction(value: String, whole: android.widget.EditText, numerator: android.widget.EditText, denominator: android.widget.EditText) { val parsed = parseInch(value); whole.setText(parsed.first); numerator.setText(parsed.second); denominator.setText(parsed.third) }
 
-    private fun setFractionOnly(value: String, numerator: android.widget.EditText, denominator: android.widget.EditText) {
-        val parsed = parseInch(value)
-        numerator.setText(parsed.second)
-        denominator.setText(parsed.third)
-    }
     private fun setSignedFraction(value: String, negative: android.widget.CheckBox, numerator: android.widget.EditText, denominator: android.widget.EditText) {
         val parsed = parseInch(value)
         negative.isChecked = parsed.second.trim().startsWith("-")
@@ -125,11 +134,6 @@ class DetailActivity : AppCompatActivity() {
             val textScale = (imageWidth.toFloat() / density) / 463f
             overlays.forEach { view ->
                 val anchor = anchors[view] ?: return@forEach
-                val params = view.layoutParams as FrameLayout.LayoutParams
-                params.marginStart = 0
-                params.leftMargin = 0
-                params.topMargin = 0
-                view.layoutParams = params
                 view.setTextSize(TypedValue.COMPLEX_UNIT_PX, baseTextSizes.getValue(view) * textScale)
                 val padding = basePaddings.getValue(view)
                 view.setPadding(
@@ -158,9 +162,6 @@ class DetailActivity : AppCompatActivity() {
     private fun updatePreview() {
         if (!::binding.isInitialized) return
         fun v(id: android.widget.EditText) = id.text.toString()
-        fun setPair(numeratorView: android.widget.TextView, denominatorView: android.widget.TextView, numerator: android.widget.EditText, denominator: android.widget.EditText) {
-            numeratorView.text = v(numerator); denominatorView.text = v(denominator)
-        }
         fun setSignedPair(numeratorView: android.widget.TextView, denominatorView: android.widget.TextView, negative: android.widget.CheckBox, numerator: android.widget.EditText, denominator: android.widget.EditText) {
             val value = v(numerator)
             numeratorView.text = if (negative.isChecked && value.isNotBlank()) "-$value" else value
@@ -175,7 +176,39 @@ class DetailActivity : AppCompatActivity() {
         setPreviewFraction(binding.tvPreviewSpanMidInt, binding.tvPreviewSpanMidNum, binding.tvPreviewSpanMidDen, binding.etSpanMidInt, binding.etSpanMidNum, binding.etSpanMidDen); setPreviewFraction(binding.tvPreviewSpanRingInt, binding.tvPreviewSpanRingNum, binding.tvPreviewSpanRingDen, binding.etSpanRingInt, binding.etSpanRingNum, binding.etSpanRingDen);
         binding.tvPreviewHand.text = if (binding.rbLeftHand.isChecked) "LH" else "RH"
     }
+    /** 분자·분모 중 한쪽만 채워진 항목을 찾는다. 그대로 저장하면 그 분수는 버려지므로 미리 알린다 */
+    private fun findIncompleteFractions(): List<String> {
+        val pairs = listOf(
+            Triple("중지 X", binding.etMidXNum, binding.etMidXDen),
+            Triple("중지 Y", binding.etMidYNum, binding.etMidYDen),
+            Triple("약지 X", binding.etRingXNum, binding.etRingXDen),
+            Triple("약지 Y", binding.etRingYNum, binding.etRingYDen),
+            Triple("엄지 X", binding.etThumbXNum, binding.etThumbXDen),
+            Triple("엄지 Y", binding.etThumbYNum, binding.etThumbYDen),
+            Triple("스팬(엄지-중지)", binding.etSpanMidNum, binding.etSpanMidDen),
+            Triple("스팬(엄지-약지)", binding.etSpanRingNum, binding.etSpanRingDen),
+            Triple("브릿지", binding.etBridgeNum, binding.etBridgeDen)
+        )
+        return pairs.filter { (_, num, den) ->
+            num.text.toString().isBlank() != den.text.toString().isBlank()
+        }.map { it.first }
+    }
+
     private fun saveRecord() {
+        val incomplete = findIncompleteFractions()
+        if (incomplete.isEmpty()) {
+            performSave()
+            return
+        }
+        AlertDialog.Builder(this)
+            .setTitle("입력이 덜 된 항목이 있습니다")
+            .setMessage("${incomplete.joinToString(", ")}\n\n분자와 분모 중 한쪽만 입력되어 있습니다. 이대로 저장하면 해당 값은 저장되지 않습니다.")
+            .setPositiveButton("그대로 저장") { _, _ -> performSave() }
+            .setNegativeButton("계속 입력", null)
+            .show()
+    }
+
+    private fun performSave() {
         fun v(id: android.widget.EditText) = id.text.toString()
         val record = BowlingRecord(id = currentId, name = v(binding.etName), phone = v(binding.etPhone), date = v(binding.etDate), notes = v(binding.etNotes), hand = if (binding.rbLeftHand.isChecked) "LH" else "RH", midSize = v(binding.etMidSize), midX = buildSigned(binding.cbMidXNegative.isChecked, v(binding.etMidXNum), v(binding.etMidXDen)), midY = buildSigned(binding.cbMidYNegative.isChecked, v(binding.etMidYNum), v(binding.etMidYDen)), ringSize = v(binding.etRingSize), ringX = buildSigned(binding.cbRingXNegative.isChecked, v(binding.etRingXNum), v(binding.etRingXDen)), ringY = buildSigned(binding.cbRingYNegative.isChecked, v(binding.etRingYNum), v(binding.etRingYDen)), thumbSize = v(binding.etThumbSize), thumbX = buildSigned(binding.cbThumbXNegative.isChecked, v(binding.etThumbXNum), v(binding.etThumbXDen)), thumbY = buildSigned(binding.cbThumbYNegative.isChecked, v(binding.etThumbYNum), v(binding.etThumbYDen)), spanMid = buildInch(v(binding.etSpanMidInt), v(binding.etSpanMidNum), v(binding.etSpanMidDen)), spanRing = buildInch(v(binding.etSpanRingInt), v(binding.etSpanRingNum), v(binding.etSpanRingDen)), bridgeSize = buildInch(v(binding.etBridgeInt), v(binding.etBridgeNum), v(binding.etBridgeDen)))
         viewModel.saveRecord(record) { Toast.makeText(this, "저장 완료", Toast.LENGTH_SHORT).show(); finish() }

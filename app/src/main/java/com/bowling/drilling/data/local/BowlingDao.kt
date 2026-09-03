@@ -24,4 +24,10 @@ interface BowlingDao {
 
     @Query("SELECT * FROM bowling_records WHERE id = :id")
     suspend fun getRecordById(id: Long): BowlingRecord?
+
+    @Query("SELECT * FROM bowling_records WHERE name = :name AND phone = :phone LIMIT 1")
+    suspend fun getByNameAndPhone(name: String, phone: String): BowlingRecord?
+
+    @Query("SELECT * FROM bowling_records ORDER BY id DESC")
+    suspend fun getAllRecordsOnce(): List<BowlingRecord>
 }

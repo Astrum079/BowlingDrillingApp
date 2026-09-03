@@ -7,6 +7,7 @@ import com.bowling.drilling.data.entity.BowlingRecord
 import com.bowling.drilling.data.mapper.ExcelMapper
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import org.apache.poi.ss.usermodel.Workbook
 import org.apache.poi.ss.usermodel.WorkbookFactory
 import java.io.InputStream
 
@@ -15,12 +16,13 @@ class ExcelImporter(private val contentResolver: ContentResolver) {
     suspend fun importFromUri(uri: Uri): List<BowlingRecord> = withContext(Dispatchers.IO) {
         val records = mutableListOf<BowlingRecord>()
         var inputStream: InputStream? = null
+        var workbook: Workbook? = null
 
         try {
             inputStream = contentResolver.openInputStream(uri)
                 ?: throw IllegalArgumentException("파일을 열 수 없습니다: $uri")
 
-            val workbook = WorkbookFactory.create(inputStream)
+            workbook = WorkbookFactory.create(inputStream)
             val sheet = workbook.getSheetAt(0)
 
             for (i in 1..sheet.lastRowNum) {
@@ -28,12 +30,11 @@ class ExcelImporter(private val contentResolver: ContentResolver) {
                 val record = ExcelMapper.fromExcelRow(row)
                 record?.let { records.add(it) }
             }
-
-            workbook.close()
         } catch (e: Exception) {
-            throw Exception("엑셀 파일 파싱 실패: ${e.message}")
+            throw Exception("엑셀 파일 파싱 실패: ${e.message}", e)
         } finally {
-            inputStream?.close()
+            runCatching { workbook?.close() }
+            runCatching { inputStream?.close() }
         }
 
         records

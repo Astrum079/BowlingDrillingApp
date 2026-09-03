@@ -37,23 +37,40 @@ android:background="?android:attr/colorBackground">
         android:layout_weight="1"
         android:clipToPadding="false"
         android:paddingHorizontal="12dp"
-        android:paddingBottom="80dp" />
+        android:paddingBottom="140dp" />
 
 </LinearLayout>
 
 <!-- STREAMING_CHUNK:Adding Floating Action Buttons... -->
 <!-- 좌측 하단 백업/불러오기 버튼 -->
-<com.google.android.material.floatingactionbutton.FloatingActionButton
-    android:id="@+id/fabImport"
+<LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_gravity="bottom|start"
     android:layout_margin="16dp"
-    android:contentDescription="데이터 가져오기"
-    android:src="@android:drawable/ic_menu_upload"
-    app:backgroundTint="#475569"
-    app:fabSize="normal"
-    app:tint="@android:color/white" />
+    android:orientation="vertical">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabExport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:contentDescription="엑셀로 내보내기"
+        android:src="@android:drawable/ic_menu_save"
+        app:backgroundTint="#475569"
+        app:fabSize="normal"
+        app:tint="@android:color/white" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabImport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="엑셀에서 가져오기"
+        android:src="@android:drawable/ic_menu_upload"
+        app:backgroundTint="#475569"
+        app:fabSize="normal"
+        app:tint="@android:color/white" />
+</LinearLayout>
 
 <!-- 우측 하단 신규 등록 FAB 버튼 -->
 <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
