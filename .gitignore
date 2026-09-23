@@ -14,3 +14,12 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# 서명 키와 비밀번호는 절대 커밋하지 않는다
+keystore.properties
+*.jks
+*.keystore
+
+# 빌드 산출물
+/dist
+*.apk

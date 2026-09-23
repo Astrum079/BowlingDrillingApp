@@ -1,4 +1,4 @@
 <!-- app/src/main/res/values/strings.xml – 문자열 리소스 -->
 <resources>
-    <string name="app_name">BowlingDrillingApp</string>
+    <string name="app_name">지공데이터 관리</string>
 </resources>
