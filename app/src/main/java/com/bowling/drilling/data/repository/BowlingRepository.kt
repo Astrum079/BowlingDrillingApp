@@ -2,6 +2,7 @@
 package com.bowling.drilling.data.repository
 
 import com.bowling.drilling.data.entity.BowlingRecord
+import com.bowling.drilling.utils.SortOrder
 import kotlinx.coroutines.flow.Flow
 
 /** 가져오기 결과 요약 (덮어쓸 건수 / 새로 추가할 건수 / 파일 안에서 중복된 건수) */
@@ -14,7 +15,7 @@ data class ImportSummary(
 }
 
 interface BowlingRepository {
-    fun getAllRecords(searchQuery: String? = null): Flow<List<BowlingRecord>>
+    fun getAllRecords(searchQuery: String? = null, sortBy: SortOrder = SortOrder.BY_LAST_MODIFIED): Flow<List<BowlingRecord>>
     suspend fun insert(record: BowlingRecord)
     suspend fun update(record: BowlingRecord)
     suspend fun delete(record: BowlingRecord)

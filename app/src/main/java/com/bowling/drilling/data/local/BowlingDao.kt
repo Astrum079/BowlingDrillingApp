@@ -13,6 +13,24 @@ interface BowlingDao {
     @Query("SELECT * FROM bowling_records WHERE name LIKE '%' || :query || '%' OR phone LIKE '%' || :query || '%' ORDER BY id DESC")
     fun searchRecords(query: String): Flow<List<BowlingRecord>>
 
+    @Query("SELECT * FROM bowling_records ORDER BY name ASC")
+    fun getAllRecordsByName(): Flow<List<BowlingRecord>>
+
+    @Query("SELECT * FROM bowling_records WHERE name LIKE '%' || :query || '%' OR phone LIKE '%' || :query || '%' ORDER BY name ASC")
+    fun searchRecordsByName(query: String): Flow<List<BowlingRecord>>
+
+    @Query("SELECT * FROM bowling_records ORDER BY date DESC")
+    fun getAllRecordsByDate(): Flow<List<BowlingRecord>>
+
+    @Query("SELECT * FROM bowling_records WHERE name LIKE '%' || :query || '%' OR phone LIKE '%' || :query || '%' ORDER BY date DESC")
+    fun searchRecordsByDate(query: String): Flow<List<BowlingRecord>>
+
+    @Query("SELECT * FROM bowling_records ORDER BY lastModified DESC")
+    fun getAllRecordsByLastModified(): Flow<List<BowlingRecord>>
+
+    @Query("SELECT * FROM bowling_records WHERE name LIKE '%' || :query || '%' OR phone LIKE '%' || :query || '%' ORDER BY lastModified DESC")
+    fun searchRecordsByLastModified(query: String): Flow<List<BowlingRecord>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(record: BowlingRecord)
 

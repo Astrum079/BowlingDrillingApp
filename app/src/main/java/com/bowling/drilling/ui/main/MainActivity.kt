@@ -4,6 +4,7 @@ package com.bowling.drilling.ui.main
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -19,6 +20,7 @@ import com.bowling.drilling.data.importer.ExcelImporter
 import com.bowling.drilling.databinding.ActivityMainBinding
 import com.bowling.drilling.di.RepositoryModule
 import com.bowling.drilling.ui.detail.DetailActivity
+import com.bowling.drilling.utils.SortOrder
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
@@ -45,6 +47,7 @@ class MainActivity : AppCompatActivity() {
 
         setupRecyclerView()
         setupSearch()
+        setupSort()
         setupFab()
 
         lifecycleScope.launch {
@@ -166,6 +169,23 @@ class MainActivity : AppCompatActivity() {
                 viewModel.setSearchQuery(newText.orEmpty())
                 return true
             }
+        })
+    }
+
+    private fun setupSort() {
+        val sortOptions = SortOrder.values().map { it.displayName }
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, sortOptions)
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        binding.sortSpinner.adapter = adapter
+        binding.sortSpinner.setSelection(SortOrder.BY_LAST_MODIFIED.ordinal)
+
+        binding.sortSpinner.setOnItemSelectedListener(object : android.widget.AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: android.widget.AdapterView<*>?, view: android.view.View?, position: Int, id: Long) {
+                val selectedSort = SortOrder.values()[position]
+                viewModel.setSortOrder(selectedSort)
+            }
+
+            override fun onNothingSelected(parent: android.widget.AdapterView<*>?) {}
         })
     }
 

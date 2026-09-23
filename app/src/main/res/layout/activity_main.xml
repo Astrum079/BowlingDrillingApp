@@ -28,6 +28,29 @@ android:background="?android:attr/colorBackground">
             app:queryHint="회원 이름 또는 전화번호 검색..." />
     </com.google.android.material.card.MaterialCardView>
 
+    <!-- 정렬 옵션 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="8dp"
+        android:gravity="end">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="정렬:"
+            android:textSize="14sp"
+            android:layout_marginEnd="8dp" />
+
+        <Spinner
+            android:id="@+id/sortSpinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minWidth="120dp" />
+    </LinearLayout>
+
     <!-- STREAMING_CHUNK:Adding RecyclerView container for member list... -->
     <!-- 회원 목록 리사이클러뷰 -->
     <androidx.recyclerview.widget.RecyclerView

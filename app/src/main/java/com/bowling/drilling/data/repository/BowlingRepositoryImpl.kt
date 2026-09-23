@@ -3,15 +3,23 @@ package com.bowling.drilling.data.repository
 
 import com.bowling.drilling.data.entity.BowlingRecord
 import com.bowling.drilling.data.local.BowlingDao
+import com.bowling.drilling.utils.SortOrder
 import kotlinx.coroutines.flow.Flow
 
 class BowlingRepositoryImpl(private val dao: BowlingDao) : BowlingRepository {
 
-    override fun getAllRecords(searchQuery: String?): Flow<List<BowlingRecord>> {
-        return if (searchQuery.isNullOrEmpty()) {
-            dao.getAllRecords()
-        } else {
-            dao.searchRecords(searchQuery)
+    override fun getAllRecords(searchQuery: String?, sortBy: SortOrder): Flow<List<BowlingRecord>> {
+        return when {
+            searchQuery.isNullOrEmpty() -> when (sortBy) {
+                SortOrder.BY_NAME -> dao.getAllRecordsByName()
+                SortOrder.BY_DATE -> dao.getAllRecordsByDate()
+                SortOrder.BY_LAST_MODIFIED -> dao.getAllRecordsByLastModified()
+            }
+            else -> when (sortBy) {
+                SortOrder.BY_NAME -> dao.searchRecordsByName(searchQuery)
+                SortOrder.BY_DATE -> dao.searchRecordsByDate(searchQuery)
+                SortOrder.BY_LAST_MODIFIED -> dao.searchRecordsByLastModified(searchQuery)
+            }
         }
     }
 
@@ -54,7 +62,7 @@ class BowlingRepositoryImpl(private val dao: BowlingDao) : BowlingRepository {
             val isDuplicateInFile = !seenInFile.add(key)
 
             if (existing != null) {
-                val merged = record.copy(id = existing.id)
+                val merged = record.copy(id = existing.id, lastModified = existing.lastModified)
                 dao.update(merged)
                 index[key] = merged
                 if (isDuplicateInFile) duplicatedInFile++ else updated++

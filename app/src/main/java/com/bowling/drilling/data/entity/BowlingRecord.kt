@@ -34,5 +34,8 @@ data class BowlingRecord(
     // 스팬 (Span)
     var spanMid: String = "",
     var spanRing: String = "",
-    var bridgeSize: String = ""
+    var bridgeSize: String = "",
+
+    // 타임스탐프
+    var lastModified: Long = System.currentTimeMillis()
 )
